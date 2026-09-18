@@ -27,8 +27,8 @@ html {
    ЛЕЙАУТ
    ========================================== */
 .center {
-  padding-left: calc(50% - 700px);
-  padding-right: calc(50% - 700px);
+  padding-left: max(20px, calc(50% - 700px));
+  padding-right: max(20px, calc(50% - 700px));
 }
 
 /* ==========================================
@@ -371,5 +371,102 @@ html {
 
   .modal__title {
     font-size: 24px;
+  }
+  .header__title,
+  .header__paragraph {
+    /* Создаем плотное белое свечение вокруг темных букв */
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.9),
+      0 0 20px rgba(255, 255, 255, 0.8),
+      0 0 30px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* ==========================================
+   АДАПТАЦИЯ ШАПКИ
+   ========================================== */
+
+/* --- Ноутбуки и планшеты (до 1200px) --- */
+@media (max-width: 1200px) {
+  .header__title {
+    padding-top: 70px;
+    font-size: 64px;
+    width: auto;
+    max-width: 560px;
+  }
+
+  .header__paragraph {
+    font-size: 22px;
+    width: auto;
+    max-width: 420px;
+  }
+}
+
+/* --- Планшеты (до 900px) --- */
+@media (max-width: 900px) {
+  .header__logo {
+    height: 80px;
+  }
+
+  .header__title {
+    padding-top: 56px;
+    padding-bottom: 20px;
+    font-size: 48px;
+    max-width: 480px;
+  }
+
+  .header__paragraph {
+    font-size: 20px;
+    max-width: 380px;
+    padding-bottom: 32px;
+  }
+}
+
+/* --- Телефоны (до 600px) --- */
+@media (max-width: 600px) {
+  .header {
+    /* смещаем фон, чтобы люди на фото не уезжали за край */
+    background-position: 65% top;
+    padding-bottom: 20px;
+  }
+
+  .header__logo {
+    height: 64px;
+    padding-top: 20px;
+  }
+
+  .header__title {
+    padding-top: 40px;
+    padding-bottom: 18px;
+    font-size: 36px;
+    max-width: 100%;
+  }
+
+  .header__divider {
+    width: 70px;
+    margin-bottom: 20px;
+  }
+
+  .header__paragraph {
+    font-size: 17px;
+    max-width: 100%;
+    padding-bottom: 28px;
+  }
+
+  .header__btn {
+    width: 100%;
+    max-width: 320px;
+    font-size: 18px;
+  }
+}
+
+/* --- Маленькие телефоны (до 380px) --- */
+@media (max-width: 380px) {
+  .header__title {
+    font-size: 30px;
+  }
+
+  .header__paragraph {
+    font-size: 16px;
   }
 }
