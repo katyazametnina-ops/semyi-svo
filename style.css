@@ -1,0 +1,375 @@
+/* ==========================================
+   ПЕРЕМЕННЫЕ
+   ========================================== */
+:root {
+  --color-bg: #f1efea; /* фон страницы */
+  --color-surface: #fbfaf7; /* фон карточек */
+  --color-accent: #52564a; /* кнопки */
+  --color-accent-muted: #9a9b8d; /* линии, сердечки */
+  --color-text: #2e2f2a;
+  --color-text-light: #6e6f66;
+}
+
+/* ==========================================
+   СБРОС СТИЛЕЙ
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================
+   ЛЕЙАУТ
+   ========================================== */
+.center {
+  padding-left: calc(50% - 700px);
+  padding-right: calc(50% - 700px);
+}
+
+/* ==========================================
+   ШАПКА
+   ========================================== */
+.header {
+  background-image: url("./img/background.header.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  color: #26231f;
+}
+
+.header__logo {
+  height: 100px;
+}
+
+.header__title {
+  padding-top: 100px;
+  padding-bottom: 26px;
+  font-size: 84px;
+  width: 600px;
+  font-weight: 540;
+}
+
+.header__divider {
+  width: 90px;
+  border: none;
+  background-color: #53523f;
+  height: 3px;
+  margin-bottom: 26px;
+}
+
+.header__paragraph {
+  font-size: 26px;
+  font-weight: 500;
+  width: 450px;
+  padding-bottom: 38px;
+}
+
+.header__btn {
+  width: 250px;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  background-color: #53523f;
+  color: #f0f0ea;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+/* ==========================================
+   СЕКЦИЯ ИСТОРИЙ
+   ========================================== */
+.stories {
+  background-color: #f5f1ec;
+  padding-bottom: 100px;
+}
+
+.stories__title {
+  text-align: center;
+  padding-top: 24px;
+  color: #474039;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.decor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.decor__line {
+  width: 48px;
+  border: none;
+  background-color: #8a8672;
+  height: 2px;
+}
+
+.decor__heart-icon {
+  height: 20px;
+  width: 20px;
+  color: #8a8672;
+}
+
+/* ==========================================
+   СЕТКА КАРТОЧЕК
+   ========================================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   КАРТОЧКА
+   ========================================== */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.card__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 24px;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.card__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--color-text-light);
+  margin-bottom: 14px;
+}
+
+.card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+.card__btn:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* ==========================================
+   ПОДВАЛ
+   ========================================== */
+.footer {
+  background-color: #3f4238;
+  color: #e5e4de;
+  padding: 48px 20px;
+  text-align: center;
+}
+
+.footer__copy {
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+}
+
+/* ==========================================
+   МОДАЛЬНОЕ ОКНО
+   ========================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(30, 30, 27, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal__window {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width: 100%;
+  max-width: 960px;
+  height: 85vh;
+  background: var(--color-surface);
+  border-radius: 8px;
+  overflow: hidden;
+  transform: translateY(24px);
+  transition: transform 0.3s ease;
+}
+
+.modal.is-open .modal__window {
+  transform: translateY(0);
+}
+
+.modal__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal__content {
+  padding: 48px;
+  overflow-y: auto;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.modal__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal__content::-webkit-scrollbar-thumb {
+  background-color: var(--color-accent-muted, #9a9b8d);
+  border-radius: 10px;
+}
+
+.modal__location {
+  font-size: 14px;
+  color: var(--color-text-light);
+  margin-bottom: 8px;
+}
+
+.modal__title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.modal__text p {
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.modal__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.modal__back:hover {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.modal__back .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.modal__back:hover .arrow-icon {
+  transform: rotate(180deg) translateX(5px);
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.modal__close:hover {
+  background: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .modal__window {
+    grid-template-columns: 1fr;
+    grid-template-rows: 240px minmax(0, 1fr);
+    height: 90vh;
+  }
+
+  .modal__content {
+    padding: 28px 24px;
+  }
+
+  .modal__title {
+    font-size: 24px;
+  }
+}

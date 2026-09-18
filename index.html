@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Истории родных людей, чьи близкие ушли на СВО. Социальный проект поддержки семей героев."
+    />
+    <title>Семьи героев</title>
+
+    <!-- Предзагрузка шрифтов для скорости -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Стили для анимации AOS (обязательно для работы скрипта AOS) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Твой основной CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ШАПКА -->
+    <header class="header center">
+      <img
+        class="header__logo"
+        src="./img/semyi-geroev.svg"
+        alt="Логотип проекта Семьи героев"
+      />
+      <h1 class="header__title">За каждым героем &mdash; семья</h1>
+      <hr class="header__divider" />
+      <p class="header__paragraph">
+        Истории родных людей, чьи близкие ушли на СВО, чтобы мы могли жить в
+        мире.
+      </p>
+      <button class="header__btn" type="button">Читать истории ↓</button>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ (Тег main важен для поисковиков) -->
+    <main>
+      <section class="stories center" id="stories">
+        <h2 class="stories__title">ИХ ИСТОРИИ</h2>
+
+        <div class="decor" aria-hidden="true">
+          <span class="decor__line"></span>
+          <svg
+            class="decor__heart-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+            />
+          </svg>
+          <span class="decor__line"></span>
+        </div>
+
+        <!-- Карточки рендерятся из index.js -->
+        <div class="cards"></div>
+      </section>
+    </main>
+
+    <!-- ПОДВАЛ -->
+    <footer class="footer">
+      <div class="footer__content center">
+        <p class="footer__copy">
+          &copy; Семьи героев, 2024. Спасибо за вашу поддержку.
+        </p>
+      </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div class="modal" id="storyModal" aria-hidden="true">
+      <div
+        class="modal__window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <button
+          class="modal__close"
+          id="modalClose"
+          aria-label="Закрыть модальное окно"
+          type="button"
+        >
+          &times;
+        </button>
+        <div class="modal__photo">
+          <img
+            class="modal__img"
+            id="modalImage"
+            src=""
+            alt="Фотография героя"
+          />
+        </div>
+        <div class="modal__content">
+          <p class="modal__location" id="modalLocation"></p>
+          <h2 class="modal__title" id="modalTitle"></h2>
+          <div class="modal__text" id="modalText"></div>
+          <button class="modal__back" id="modalBack" type="button">
+            <svg
+              class="arrow-icon"
+              width="18"
+              height="12"
+              viewBox="0 0 18 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 6H17M17 6L12 1M17 6L12 11"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Вернуться
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- СКРИПТЫ -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
